@@ -192,6 +192,10 @@ export const comment = (() => {
     /**
      * @returns {Promise<ReturnType<typeof dto.getCommentsResponse>>}
      */
+    pagination.setTotal = function(count) {
+        console.log("pagination dimatikan, count aslinya:", count);
+        // Tidak melakukan apapun, jadi nav tidak akan di-show
+    };
     const show = () => {
 
         // remove all event listener.

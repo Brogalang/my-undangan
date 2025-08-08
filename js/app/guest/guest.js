@@ -254,10 +254,10 @@ export const guest = (() => {
         const url = new URL('https://calendar.google.com/calendar/render');
         const data = new URLSearchParams({
             action: 'TEMPLATE',
-            text: 'The Wedding of Wahyu and Riski',
-            dates: `${formatDate('2023-03-15 10:00')}/${formatDate('2023-03-15 11:00')}`,
+            text: 'The Wedding of Nurul and Galang',
+            dates: `${formatDate('2025-09-06 11:00')}/${formatDate('2025-09-06 13:00')}`,
             details: 'Tanpa mengurangi rasa hormat, kami mengundang Anda untuk berkenan menghadiri acara pernikahan kami. Terima kasih atas perhatian dan doa restu Anda, yang menjadi kebahagiaan serta kehormatan besar bagi kami.',
-            location: 'RT 10 RW 02, Desa Pajerukan, Kec. Kalibagor, Kab. Banyumas, Jawa Tengah 53191.',
+            location: 'Gedung Guru KPRI Murrah Buayan, Buayan Timur, Buayan, Kec. Buayan, Kabupaten Kebumen, Jawa Tengah 54474.',
             ctz: config.get('tz'),
         });
 
