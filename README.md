@@ -1,5 +1,3 @@
-# 💌 Template website undangan pernikahan sederhana
-
 ## 📦 Documentation
 
 * Jalankan perintah `npm install`, lalu `npm run dev`, dan buka `http://localhost:8080`.
@@ -12,8 +10,6 @@
 
 > Jika kamu punya pertanyaan, gunakan fitur `discussions` agar bisa dibaca juga oleh teman-teman lainnya.
 
-> [!WARNING]  
-> Gunakan versi 3.14.0, untuk versi 4 masih tahap pengembangan dan berpotensi teredapat bug 🐛
 
 ## ⚙️ Tech stack
 
