@@ -60,17 +60,24 @@ export const guest = (() => {
      * @returns {void}
      */
     const showGuestName = () => {
-        /**
-         * Make sure "to=" is the last query string.
-         * Ex. ulems.my.id/?id=some-uuid-here&to=name
+         /**
+         * Ex. ...?id=xxx&to=Fahrizal&galeri=Ning
          */
-        const raw = window.location.search.split('to=');
+        const params = window.location.search;
+        const rawTo = params.split('to=')[1]; 
         let name = null;
+        let galeri = null;
 
-        if (raw.length > 1 && raw[1].length >= 1) {
-            name = window.decodeURIComponent(raw[1]);
+        if (rawTo) {
+            // kalau ada tambahan "&galeri=" kita pisahkan
+            const parts = rawTo.split('&galeri=');
+            name = window.decodeURIComponent(parts[0]);
+            if (parts[1]) {
+                galeri = window.decodeURIComponent(parts[1]);
+            }
         }
 
+        // tampilkan nama tamu
         if (name) {
             const guestName = document.getElementById('guest-name');
             const div = document.createElement('div');
@@ -82,11 +89,54 @@ export const guest = (() => {
             guestName?.appendChild(div);
         }
 
+        // isi hidden form
         const form = document.getElementById('form-name');
         if (form) {
             form.value = information.get('name') ?? name;
         }
-    };
+
+        // kontrol galeri
+        const galleryDiv = document.getElementById('carousel-image-two');
+        if (galleryDiv) {
+            if (galeri && galeri.toLowerCase() === 'ning') {
+                galleryDiv.style.display = 'none'; //sembunyikan
+            } else {
+                galleryDiv.style.display = 'block'; //tampilkan
+            }
+        }
+
+        // === Love Gifts ===
+        const loveGiftSection = document.getElementById('lovegifts');
+            if (loveGiftSection) {
+                if (galeri && galeri.toLowerCase() === 'non') {
+                    loveGiftSection.style.display = 'none'; //sembunyikan
+                } else {
+                    loveGiftSection.style.display = 'block'; //tampilkan
+                }
+            }
+        };
+
+    // const showGallery = () => {
+    //     /**
+    //      * Ex. ulems.my.id/?id=some-uuid-here&galeri=Ning
+    //      */
+    //     const raw = window.location.search.split('galeri=');
+    //     let keyword = null;
+
+    //     if (raw.length > 1 && raw[1].length >= 1) {
+    //         keyword = window.decodeURIComponent(raw[1]);
+    //     }
+
+    //     const galleryDiv = document.getElementById('carousel-image-two'); // ID div galeri
+
+    //     if (galleryDiv) {
+    //         if (keyword && keyword.toLowerCase() === 'ning') {
+    //             galleryDiv.style.display = 'none';  // sembunyikan
+    //         } else {
+    //             galleryDiv.style.display = 'block';   // tampilkan
+    //         }
+    //     }
+    // };
 
     /**
      * @returns {Promise<void>}
@@ -293,6 +343,7 @@ export const guest = (() => {
         animateSvg();
         countDownDate();
         showGuestName();
+        // showGallery();
         modalImageClick();
         normalizeArabicFont();
         buildGoogleCalendar();
