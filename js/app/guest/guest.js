@@ -63,19 +63,19 @@ export const guest = (() => {
          /**
          * Ex. ...?id=xxx&to=Fahrizal&galeri=Ning
          */
-        const params = window.location.search;
-        const rawTo = params.split('to=')[1]; 
-        let name = null;
-        let galeri = null;
+        const params = new URLSearchParams(window.location.search);
 
-        if (rawTo) {
-            // kalau ada tambahan "&galeri=" kita pisahkan
-            const parts = rawTo.split('&galeri=');
-            name = window.decodeURIComponent(parts[0]);
-            if (parts[1]) {
-                galeri = window.decodeURIComponent(parts[1]);
-            }
-        }
+        const name = params.get('to');        // ex. to=Fahrizal
+        const galeri = params.get('galeri') || params.get('galery'); // support keduanya
+
+        // if (rawTo) {
+        //     // kalau ada tambahan "&galeri=" kita pisahkan
+        //     const parts = rawTo.split('&galeri=');
+        //     name = window.decodeURIComponent(parts[0]);
+        //     if (parts[1]) {
+        //         galeri = window.decodeURIComponent(parts[1]);
+        //     }
+        // }
 
         // tampilkan nama tamu
         if (name) {
